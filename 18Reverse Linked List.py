@@ -11,28 +11,15 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        temp=head.next
-        
-        head.next=None
-        temp2=temp.next
-        head=temp
-        print(head.val,temp2.val)
-        while temp2.next!=None:
-            temp=temp2.next
-            temp2.next=head
-            head=temp2
-            temp2=temp
-            #print(head.val,temp2.val)
-        temp2.next=head
-        head=temp2
-
-        return head
-        """temp=temp2.next
-        temp2.next=head
-        head=temp2
-        temp2=temp
-        print(head.val,temp2.val)"""
-        
+        #give a start, anyway I am going to change it later
+        new_head=None
+        #---waiting to modify--head--new_head--finished--
+        while head!=None:
+            p=head
+            head=head.next
+            p.next=new_head
+            new_head=p
+        return new_head
         """
         :type head: ListNode
         :rtype: ListNode
@@ -50,4 +37,4 @@ Node4.next=Node5
 #check if the middle Node is correct
 a=Solution()
 ans=a.reverseList(Node1)
-print(ans.val,ans.next.val)
+print(ans.val,ans.next.val,ans.next.next.val,ans.next.next.next.val,ans.next.next.next.next.val)
