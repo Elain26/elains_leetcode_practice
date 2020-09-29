@@ -91,9 +91,14 @@ class MyLinkedList(object):
 
 
 # Your MyLinkedList object will be instantiated and called as such:
-# obj = MyLinkedList()
-# param_1 = obj.get(index)
-# obj.addAtHead(val)
-# obj.addAtTail(val)
-# obj.addAtIndex(index,val)
-# obj.deleteAtIndex(index)
+
+obj = MyLinkedList()
+obj.addAtHead(1)
+obj.addAtTail(3)
+p0=obj.addAtIndex(1,2)
+#print(p0.val,p0.next.val,p0.next.next.val)
+param_1 = obj.get(1)
+p0=obj.deleteAtIndex(1)
+print(p0.val,p0.next.val)
+param_2 = obj.get(1)
+print(param_2)
