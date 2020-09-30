@@ -18,12 +18,14 @@ class MyLinkedList(object):
         :rtype: int
         """
         p=self.head
+        if index>self.size-1 or index<0:
+            return -1
         for i in range(index+1):
             if i==index:
                 return p.val
             p=p.next
             i+=1
-        return -1
+        
     
         
 
@@ -47,6 +49,10 @@ class MyLinkedList(object):
         """
         p=self.head
         new_tail=ListNode(val)
+        if self.size==0:
+            self.head=new_tail
+            self.size+=1
+            return
         while p.next:
             p=p.next
         p.next=new_tail
@@ -61,10 +67,18 @@ class MyLinkedList(object):
         :type val: int
         :rtype: None
         """
+        if index>self.size:
+            return
         add_node=ListNode(val)
         p=self.head
-        for i in range(index+1):
-            if i==index:
+        if index==0:
+            new_head=ListNode(val)
+            new_head.next=self.head
+            self.head=new_head
+            self.size+=1
+            return
+        for i in range(index):
+            if i==index-1:
                 p0=p.next
                 p.next=add_node
                 add_node.next=p0
@@ -79,13 +93,18 @@ class MyLinkedList(object):
         :rtype: None
         """
         p=self.head
-        for i in range(index+1):
-            if i==index:
+        if index>self.size-1:
+            return
+        if index==0:
+            p=p.next
+            self.head=p
+            self.size-=1
+            return
+        for i in range(index):
+            if i==index-1:
                 p.next=p.next.next
             p=p.next
         self.size-=1
-        
-
 
 # Your MyLinkedList object will be instantiated and called as such:
 
