@@ -4,7 +4,7 @@ class ListNode(object):
         self.next = next
 class MyLinkedList(object):
 
-    def __init__(self,val=0,next=None):
+    def __init__(self):
         """
         Initialize your data structure here.
         """
@@ -17,14 +17,14 @@ class MyLinkedList(object):
         :type index: int
         :rtype: int
         """
-        count=0
         p=self.head
-        while p:
-            if count==index:
+        for i in range(index+1):
+            if i==index:
                 return p.val
             p=p.next
-            count=count+1
+            i+=1
         return -1
+    
         
 
     def addAtHead(self, val):
@@ -37,6 +37,7 @@ class MyLinkedList(object):
         new_head.next=self.head
         self.head=new_head
         self.size+=1
+        
 
     def addAtTail(self, val):
         """
@@ -45,11 +46,13 @@ class MyLinkedList(object):
         :rtype: None
         """
         p=self.head
-        while p and p.next:
+        new_tail=ListNode(val)
+        while p.next:
             p=p.next
-        new_end=ListNode(val)
-        p.next=new_end
+        p.next=new_tail
         self.size+=1
+            
+        
 
     def addAtIndex(self, index, val):
         """
@@ -58,19 +61,16 @@ class MyLinkedList(object):
         :type val: int
         :rtype: None
         """
-        count=0
-        cur=ListNode(val)
+        add_node=ListNode(val)
         p=self.head
-        while p:            
-            if count==index-1:
-                p1=p.next
-                p.next=cur
-                cur.next=p1
-                self.size+=1
-            return self.head
+        for i in range(index+1):
+            if i==index:
+                p0=p.next
+                p.next=add_node
+                add_node.next=p0
             p=p.next
-            count=count+1
-        return 
+        self.size+=1        
+        
 
     def deleteAtIndex(self, index):
         """
@@ -78,15 +78,12 @@ class MyLinkedList(object):
         :type index: int
         :rtype: None
         """
-        count=0
         p=self.head
-        while p:
-            if count==index-1:
-                p.next==p.next.next
-            return self.head
+        for i in range(index+1):
+            if i==index:
+                p.next=p.next.next
             p=p.next
-            count=count+1
-        return 
+        self.size-=1
         
 
 
