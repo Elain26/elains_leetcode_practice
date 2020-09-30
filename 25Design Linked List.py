@@ -2,6 +2,7 @@ class ListNode(object):
      def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+#注意题目里给的index是从0开始的，第一个数的index是0
 class MyLinkedList(object):
 
     def __init__(self):
@@ -9,6 +10,7 @@ class MyLinkedList(object):
         Initialize your data structure here.
         """
         self.head=None
+        #这个size超重要的，要用来排除掉invalid的index，一定要记得定义一个
         self.size=0
 
     def get(self, index):
@@ -49,6 +51,7 @@ class MyLinkedList(object):
         """
         p=self.head
         new_tail=ListNode(val)
+        #特殊情况，如果前面没有valid的Node，那么addAtTail和addAtHead其实一样
         if self.size==0:
             self.head=new_tail
             self.size+=1
@@ -71,6 +74,7 @@ class MyLinkedList(object):
             return
         add_node=ListNode(val)
         p=self.head
+        #特殊情况，当index为0的时候相当于addAtHead
         if index==0:
             new_head=ListNode(val)
             new_head.next=self.head
@@ -93,8 +97,10 @@ class MyLinkedList(object):
         :rtype: None
         """
         p=self.head
+        #如果index超出size的情况就不删了
         if index>self.size-1:
             return
+        #特殊情况，如果index为0的话直接把head去掉
         if index==0:
             p=p.next
             self.head=p
