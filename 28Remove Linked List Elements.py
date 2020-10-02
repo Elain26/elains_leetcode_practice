@@ -10,13 +10,17 @@ class Solution(object):
         :type val: int
         :rtype: ListNode
         """
-        
+        #special,if head is None,return NULL
         if head is None:
             return
-        if head.val==val and head.next is None:
-            return
-        p=ListNode(0)
-        p.next=head
+        #special, if head equal to value,keep iterate head until it starts with a number that is not val
+        while head.val==val:
+            #and if removes all number that equals to val and there left nothing, return Null
+            if head.val==val and head.next is None:
+                return
+            head=head.next
+        #start to remove the number that equals to value
+        p=head
         while p and p.next:
             if p.next.val==val:
                 p.next=p.next.next
