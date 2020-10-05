@@ -22,6 +22,13 @@ class Solution(object):
             else:
                 return False
         return True
+        #method 2
+        for i in range(l):
+            value=list1.pop()
+            if p.val!=value:
+                return False
+            p=p.next
+        return True
         
 Node1=ListNode(1)
 Node2=ListNode(2)
