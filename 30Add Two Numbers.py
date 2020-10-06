@@ -46,3 +46,4 @@ node22.next=node23
 a=Solution()
 head=a.addTwoNumbers(node11,node21)
 print(head.val,head.next.val,head.next.next.val)
+#tip, str1[::-1] can get the reverse string
