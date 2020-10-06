@@ -10,43 +10,27 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        
-        list1=[]
-        list2=[]
+        #two new string
+        num1=''
+        num2=''
+        #add all the number to the string
         while l1:
-            list1.append(l1.val)
+            num1+=str(l1.val)
             l1=l1.next
-
         while l2:
-            list2.append(l2.val)
+            num2+=str(l2.val)
             l2=l2.next
-
-        number1=0
-        number3=1
-        for i in range(len(list1)):            
-            number1=list1[i]*number3+number1
-            number3=10*number3
-        #print(number1)
-        number2=0
-        number3=1
-        for i in range(len(list2)):            
-            number2=list2[i]*number3+number2
-            number3=10*number3
-
-        number4=int(number1+number2)
-
-        length=(len(str(number4)))
-        number3=1
-        p=dummy=ListNode(0)
-        for i in range(length):
-            position=int(number4/number3%10)
-
-            node=ListNode(position)
-            dummy.next=node
-            #print(head.val)
-            number3=number3*10
-            dummy=dummy.next
-        return p.next
+        #reverse two string and add up, then get the string of sum, then reverse the number of sum
+        num3=str(int(num1[::-1])+int(num2[::-1]))[::-1]
+        n=len(num3)
+        #give a dummy head
+        dummy=p=ListNode(0)
+        for i in range(n):
+            node=ListNode(num3[i])
+            p.next=node
+            p=p.next
+        return dummy.next
+#test
 node11=ListNode(2)
 node12=ListNode(4)
 node13=ListNode(3)
