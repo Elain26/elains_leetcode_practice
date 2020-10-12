@@ -1,0 +1,14 @@
+Pre-order Traversal(up to down)
+first:root
+second: left subtree
+final: right subtree
+
+In-order Traversal
+first: left subtree 
+second: root
+final: right subtree
+
+Post-order Traversal
+first: left subtree 
+second: right subtree
+final: root
